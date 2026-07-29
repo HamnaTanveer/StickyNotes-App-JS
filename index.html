@@ -79,15 +79,17 @@ body{
      transition: transform 0.4s ease,
       box-shadow 0.4s ease; 
       background-color: transparent;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
 
 }
 
 
 .note h3{
     text-align:left;
-    margin:5px 0;
+    margin:5px 0 8px 0;
     font-family: 'KoHo', sans-serif;
-    margin-top: 50px;
     font-weight: bold;
 }
 
@@ -115,26 +117,23 @@ body{
 }
 
 .note .time {
-  
-    margin-top: -125px;      
-    right: 5px;     
     font-size: 15px;
     color: black;
     text-align: right;
     font-family: 'KoHo', sans-serif;
     z-index: 2;
-     font-weight: 600; 
+    font-weight: 600;
+    margin-top:15px;
 }
 
 .note .date {
-    position: absolute;
-    bottom:35px;
-    right:23px;
-    font-size:15px;
+    font-size:14px;
     color:black;
     z-index: 1;
     font-family: 'KoHo', sans-serif;
-     font-weight: 600; 
+    font-weight: 600;
+    text-align:right;
+    margin-top:5px;
 }
 
 .note:hover {
