@@ -8,225 +8,240 @@
 <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f5f5f5;
 }
 
-/* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #6fa8dc;
-    padding: 15px 30px;
-    color: white;
-    flex-wrap: wrap;
-    gap: 15px;
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#6fa8dc;
+    padding:15px 40px;
+    color:white;
+    flex-wrap:wrap;
+    row-gap:10px;
 }
 
-.navbar h2 {
-    margin: 0;
+.navbar h2{
+    margin:0;
 }
 
-.navbar ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
+.navbar ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+    flex-wrap:wrap;
+    margin:0;
+    padding:0;
 }
 
-.navbar ul li {
-    cursor: pointer;
+.inputBox{
+    text-align:center;
+    padding:30px;
+    background:black;
 }
 
-/* INPUT BOX */
-.inputBox {
-    text-align: center;
-    padding: 20px 15px;
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.inputBox input{
+    width:400px;
+    max-width:100%;
+    padding:10px;
 }
 
-.inputBox input {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
+.inputBox button{
+    padding:10px 20px;
 }
 
-.inputBox button {
-    padding: 10px 20px;
-    background: #6fa8dc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
+#notesContainer{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+    padding:40px 60px;
+    margin-top:20px;
 }
 
-.inputBox button:hover {
-    background: #5b93c7;
+.note{
+   width:180px;
+    min-height:200px;
+   background-image:url("s.jpg");   
+    background-size:cover;
+    background-position:center;
+    padding:40px 20px 20px 20px;
+   /*  box-shadow:0 5px 10px rgba(0,0,0,0.6); */
+    position:relative;
+     transition: transform 0.4s ease,
+      box-shadow 0.4s ease; 
+      background-color: transparent;
+
 }
 
-/* NOTES CONTAINER */
-#notesContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 25px;
-    padding: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-/* YELLOW STICKY NOTE DESIGN */
-.note {
-    min-height: 220px;
-    background-color: #ffeb3b; /* Classic Yellow Color */
-    padding: 45px 15px 40px 15px;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 2px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    word-break: break-word;
-}
-
-/* Slight paper tilt effect for real sticky note feel */
-.note:nth-child(even) {
-    transform: rotate(1deg);
-}
-
-.note:nth-child(odd) {
-    transform: rotate(-1deg);
-}
-
-.note h3 {
-    text-align: left;
-    margin: 10px 0 5px 0;
+.note h3{
+    text-align:left;
+    margin:5px 0;
     font-family: 'KoHo', sans-serif;
+    margin-top: 50px;
     font-weight: bold;
-    color: #333;
 }
 
-.icons-container {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    left: 8px;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.15);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-    padding-right: 8px;
-    border-radius: 4px;
+.icons-container{
+    position:absolute;
+    top:0;
+    left:10px;
+    width:94%;
+    height:30px;
+    background:rgb(105, 102, 102);
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:5px;
+    padding-right:5px;
+    box-sizing:border-box;
     z-index: 2;
 }
 
-.icons-container i {
-    color: #333;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.icons-container i:hover {
-    color: #000;
+.icons-container i{
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+   /*  position: absolute; */
 }
 
 .note .time {
-    position: absolute;
-    top: 45px;
-    right: 15px;
-    font-size: 12px;
-    color: #555;
+  
+    margin-top: -125px;      
+    right: 5px;     
+    font-size: 15px;
+    color: black;
+    text-align: right;
     font-family: 'KoHo', sans-serif;
-    font-weight: 600;
+    z-index: 2;
+     font-weight: 600; 
 }
 
 .note .date {
     position: absolute;
-    bottom: 12px;
-    right: 15px;
-    font-size: 12px;
-    color: #555;
+    bottom:35px;
+    right:23px;
+    font-size:15px;
+    color:black;
+    z-index: 1;
     font-family: 'KoHo', sans-serif;
-    font-weight: 600;
-}
-
-.note p {
-    margin-top: 20px;
-    font-family: 'KoHo', sans-serif;
-    color: #222;
-    font-size: 15px;
-}
-
-.note p::before {
-    content: "→ "; 
-    color: #333; 
-    font-weight: bold;
+     font-weight: 600; 
 }
 
 .note:hover {
-    transform: scale(1.03) rotate(0deg) !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    z-index: 5;
+    transform: scale(1.05); 
 }
 
-/* RESPONSIVE MEDIA QUERIES */
-@media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
+.note:hover .icons-container {
+    background: black;
+    transition:  0.3s ease;
+}
+.note p::before {
+    content: "→";      
+    margin-right: 5px; 
+    color: black;      
+    font-weight: bold;
+     font-family: 'KoHo', sans-serif;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px){
+
+    .navbar{
+        padding:15px 20px;
     }
 
-    .navbar ul {
-        justify-content: center;
-        gap: 12px;
-        font-size: 14px;
+    .navbar ul{
+        gap:15px;
+        font-size:14px;
     }
 
-    #notesContainer {
-        padding: 15px;
-        grid-template-columns: 1fr;
+    #notesContainer{
+        padding:30px 25px;
+        gap:25px;
     }
+
+}
+
+@media (max-width: 600px){
+
+    .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .inputBox{
+        padding:20px 15px;
+    }
+
+    .inputBox input{
+        width:100%;
+    }
+
+    .inputBox button{
+        width:100%;
+        margin-top:10px;
+    }
+
+}
+
+@media (max-width: 480px){
+
+    #notesContainer{
+        padding:20px;
+        gap:20px;
+        justify-content:space-between;
+    }
+
+    .note{
+        width:47%;
+    }
+
+}
+
+@media (max-width: 360px){
+
+    .note{
+        width:100%;
+    }
+
 }
 </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <h2>Sticky Notes App</h2>
-    <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Portfolio</li>
-        <li>Services</li>
-        <li>Contact Us</li>
-    </ul>
+<h2>Sticky Notes App</h2>
+<ul>
+<li>Home</li>
+<li>About</li>
+<li>Portfolio</li>
+<li>Services</li>
+<li>Contact Us</li>
+</ul>
 </nav>
 
 <div class="inputBox">
-    <input type="text" id="noteInput" placeholder="Add Your Notes">
-    <button class="addBtn" id="addBtn">Add</button>
+<input type="text" id="noteInput" placeholder="Add Your Notes">
+<button class="addBtn" id="addBtn">Add</button>
 </div>
 
 <div id="notesContainer"></div>
 
 <script>
+
+   
+   
 function displayTime() {
     const now = new Date();
     let hrs = now.getHours();
@@ -243,115 +258,185 @@ function displayTime() {
 
 function displayDate() {
     const now = new Date();
+
     const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-    return `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}, ${now.getFullYear()}`;
+    const dayName = days[now.getDay()];
+    const dayNum = now.getDate();
+    const monthName = months[now.getMonth()];
+    const year = now.getFullYear();
+
+    return `${dayName}, ${dayNum} ${monthName}, ${year}`;
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-    const addBtn = document.getElementById("addBtn");
-    const noteInput = document.getElementById("noteInput");
-    const notesContainer = document.getElementById("notesContainer");
 
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+document.addEventListener("DOMContentLoaded", function(){
+
+const addBtn = document.getElementById("addBtn");
+const noteInput = document.getElementById("noteInput");
+const notesContainer = document.getElementById("notesContainer");
+
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+loadNotes();
+
+
+// ADD NOTE
+addBtn.addEventListener("click", function(){
+
+    const text = noteInput.value;
+    if(text === "")
+     return;
+
+    const noteObj = {
+        text: text,
+        time: displayTime(),
+        date: displayDate()
+    };
+
+    notes.push(noteObj);
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+
+    noteInput.value = "";
 
     loadNotes();
 
-    addBtn.addEventListener("click", function(){
-        const text = noteInput.value.trim();
-        if(text === "") return;
+});
 
-        const noteObj = {
-            text: text,
-            time: displayTime(),
-            date: displayDate()
-        };
 
-        notes.push(noteObj);
-        localStorage.setItem("notes", JSON.stringify(notes));
-        noteInput.value = "";
-        loadNotes();
+
+// LOAD NOTES
+function loadNotes(){
+
+    notesContainer.innerHTML = "";
+
+    notes.forEach(function(noteObj,index){
+        createNoteItem(noteObj,index);
     });
 
-    function loadNotes(){
-        notesContainer.innerHTML = "";
-        notes.forEach(function(noteObj, index){
-            createNoteItem(noteObj, index);
-        });
-    }
+}
 
-    function createNoteItem(noteObj, index){
-        const note = document.createElement("div");
-        note.className = "note";
 
-        const iconsContainer = document.createElement("div");
-        iconsContainer.className = "icons-container";
 
-        const editIcon = document.createElement("i");
-        editIcon.className = "fa-solid fa-pen-to-square";
+// CREATE NOTE
+function createNoteItem(noteObj,index){
 
-        const deleteIcon = document.createElement("i");
-        deleteIcon.className = "fa-solid fa-trash";
+    const note = document.createElement("div");
+    note.className = "note";
 
-        const editInput = document.createElement("input");
-        editInput.type = "text";
-        editInput.style.display = "none";
-        editInput.style.height = "20px";
-        editInput.style.fontSize = "12px";
-        editInput.style.marginRight = "5px";
 
-        iconsContainer.appendChild(editInput);
-        iconsContainer.appendChild(editIcon);
-        iconsContainer.appendChild(deleteIcon);
+    const iconsContainer = document.createElement("div");
+    iconsContainer.className = "icons-container";
 
-        const heading = document.createElement("h3");
-        heading.innerText = "Sticky Notes";
 
-        const para = document.createElement("p");
-        para.innerText = noteObj.text;
+    const editIcon = document.createElement("i");
+    editIcon.className = "fa-solid fa-pen-to-square";
 
-        const timeDiv = document.createElement("div");
-        timeDiv.className = "time";
-        timeDiv.innerText = noteObj.time;
 
-        const dateDiv = document.createElement("div");
-        dateDiv.className = "date";
-        dateDiv.innerText = noteObj.date;
+    const deleteIcon = document.createElement("i");
+    deleteIcon.className = "fa-solid fa-trash";
 
-        note.appendChild(iconsContainer);
-        note.appendChild(heading);
-        note.appendChild(para);
-        note.appendChild(timeDiv);
-        note.appendChild(dateDiv);
+   //input field
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.style.display = "none";
+    editInput.style.height = "20px";
+    editInput.style.fontSize = "12px";
+    editInput.style.marginRight = "5px";
 
-        notesContainer.appendChild(note);
 
-        let editing = false;
+    iconsContainer.appendChild(editInput);
+    iconsContainer.appendChild(editIcon);
+    iconsContainer.appendChild(deleteIcon);
 
-        editIcon.addEventListener("click", function(){
-            if(!editing){
-                editInput.style.display = "inline-block";
-                editInput.value = noteObj.text;
-                editInput.focus();
-                editing = true;
-            } else {
-                notes[index].text = editInput.value;
-                notes[index].time = displayTime();
-                notes[index].date = displayDate();
 
-                localStorage.setItem("notes", JSON.stringify(notes));
-                loadNotes();
-            } 
-        });
 
-        deleteIcon.addEventListener("click", function(){
-            notes.splice(index, 1);
+    const heading = document.createElement("h3");
+    heading.innerText = "Sticky Notes";
+
+
+    const para = document.createElement("p");
+    para.innerText = noteObj.text;
+
+     //Time
+    const timeDiv = document.createElement("div");
+    timeDiv.className = "time";
+    timeDiv.innerText = noteObj.time;
+
+     //Date
+    const dateDiv = document.createElement("div");
+    dateDiv.className = "date";
+    dateDiv.innerText = noteObj.date;
+
+
+
+    note.appendChild(iconsContainer);
+    note.appendChild(heading);
+    note.appendChild(para);
+    note.appendChild(timeDiv);
+    note.appendChild(dateDiv);
+
+    notesContainer.appendChild(note);
+
+
+    // EDIT
+    let editing = false;
+
+    editIcon.addEventListener("click", function(){
+
+        if(!editing){
+
+            editInput.style.display = "block";
+            editInput.value = noteObj.text;
+            editInput.focus();
+            editing = true;
+
+        }
+        else {
+
+            notes[index].text = editInput.value;
+            notes[index].time = displayTime();
+            notes[index].date = displayDate();
+
             localStorage.setItem("notes", JSON.stringify(notes));
+
             loadNotes();
-        });
-    }
+
+        } 
+
+    });
+
+
+
+    // DELETE
+    deleteIcon.addEventListener("click", function(){
+
+        notes.splice(index,1);
+
+        localStorage.setItem("notes", JSON.stringify(notes));
+
+        loadNotes();
+
+    });
+
+}
+
 });
+        
+
+       
+       
+   
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
