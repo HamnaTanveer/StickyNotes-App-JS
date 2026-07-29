@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Mobile Responsive Scaling Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sticky Notes App</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{
-    box-sizing:border-box;
-}
-
 body{
     margin:0;
     font-family:Arial;
@@ -25,21 +22,12 @@ body{
     background:#6fa8dc;
     padding:15px 40px;
     color:white;
-    flex-wrap:wrap;
-    row-gap:10px;
-}
-
-.navbar h2{
-    margin:0;
 }
 
 .navbar ul{
     display:flex;
     list-style:none;
     gap:25px;
-    flex-wrap:wrap;
-    margin:0;
-    padding:0;
 }
 
 .inputBox{
@@ -50,7 +38,7 @@ body{
 
 .inputBox input{
     width:400px;
-    max-width:100%;
+    max-width: 80%; /* Responsive adjustment */
     padding:10px;
 }
 
@@ -61,35 +49,29 @@ body{
 #notesContainer{
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
     gap:40px;
     padding:40px 60px;
     margin-top:20px;
 }
 
 .note{
-   width:180px;
+    width:180px;
     min-height:200px;
-   background-image:url("s.jpg");   
+    background-image:url("s.jpg");   
     background-size:cover;
     background-position:center;
     padding:40px 20px 20px 20px;
-   /*  box-shadow:0 5px 10px rgba(0,0,0,0.6); */
+    /* box-shadow:0 5px 10px rgba(0,0,0,0.6); */
     position:relative;
-     transition: transform 0.4s ease,
-      box-shadow 0.4s ease; 
-      background-color: transparent;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    background-color: transparent;
 }
-
 
 .note h3{
     text-align:left;
-    margin:5px 0 8px 0;
+    margin:5px 0;
     font-family: 'KoHo', sans-serif;
+    margin-top: 50px;
     font-weight: bold;
 }
 
@@ -113,27 +95,29 @@ body{
     color:white;
     cursor:pointer;
     font-size:16px;
-   /*  position: absolute; */
+    /* position: absolute; */
 }
 
 .note .time {
+    margin-top: -125px;      
+    right: 5px;     
     font-size: 15px;
     color: black;
     text-align: right;
     font-family: 'KoHo', sans-serif;
     z-index: 2;
-    font-weight: 600;
-    margin-top:15px;
+    font-weight: 600; 
 }
 
 .note .date {
-    font-size:14px;
+    position: absolute;
+    bottom:35px;
+    right:23px;
+    font-size:15px;
     color:black;
     z-index: 1;
     font-family: 'KoHo', sans-serif;
-    font-weight: 600;
-    text-align:right;
-    margin-top:5px;
+    font-weight: 600; 
 }
 
 .note:hover {
@@ -142,78 +126,45 @@ body{
 
 .note:hover .icons-container {
     background: black;
-    transition:  0.3s ease;
+    transition: 0.3s ease;
 }
+
 .note p::before {
     content: "→";      
     margin-right: 5px; 
     color: black;      
     font-weight: bold;
-     font-family: 'KoHo', sans-serif;
+    font-family: 'KoHo', sans-serif;
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px){
-
-    .navbar{
-        padding:15px 20px;
+/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
     }
 
-    .navbar ul{
-        gap:15px;
-        font-size:14px;
+    .navbar ul {
+        padding: 0;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    #notesContainer{
-        padding:30px 25px;
-        gap:25px;
+    .inputBox {
+        padding: 20px 10px;
     }
 
-}
-
-@media (max-width: 600px){
-
-    .navbar{
-        flex-direction:column;
-        align-items:flex-start;
+    .inputBox input {
+        width: 60%;
     }
 
-    .inputBox{
-        padding:20px 15px;
+    #notesContainer {
+        padding: 20px;
+        justify-content: center;
+        gap: 20px;
     }
-
-    .inputBox input{
-        width:100%;
-    }
-
-    .inputBox button{
-        width:100%;
-        margin-top:10px;
-    }
-
-}
-
-@media (max-width: 480px){
-
-    #notesContainer{
-        padding:20px;
-        gap:20px;
-        justify-content:space-between;
-    }
-
-    .note{
-        width:47%;
-    }
-
-}
-
-@media (max-width: 360px){
-
-    .note{
-        width:100%;
-    }
-
 }
 </style>
 </head>
@@ -238,9 +189,6 @@ body{
 <div id="notesContainer"></div>
 
 <script>
-
-   
-   
 function displayTime() {
     const now = new Date();
     let hrs = now.getHours();
@@ -269,7 +217,6 @@ function displayDate() {
     return `${dayName}, ${dayNum} ${monthName}, ${year}`;
 }
 
-
 document.addEventListener("DOMContentLoaded", function(){
 
 const addBtn = document.getElementById("addBtn");
@@ -279,7 +226,6 @@ const notesContainer = document.getElementById("notesContainer");
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
 loadNotes();
-
 
 // ADD NOTE
 addBtn.addEventListener("click", function(){
@@ -295,29 +241,19 @@ addBtn.addEventListener("click", function(){
     };
 
     notes.push(noteObj);
-
     localStorage.setItem("notes", JSON.stringify(notes));
-
     noteInput.value = "";
-
     loadNotes();
 
 });
 
-
-
 // LOAD NOTES
 function loadNotes(){
-
     notesContainer.innerHTML = "";
-
     notes.forEach(function(noteObj,index){
         createNoteItem(noteObj,index);
     });
-
 }
-
-
 
 // CREATE NOTE
 function createNoteItem(noteObj,index){
@@ -325,19 +261,16 @@ function createNoteItem(noteObj,index){
     const note = document.createElement("div");
     note.className = "note";
 
-
     const iconsContainer = document.createElement("div");
     iconsContainer.className = "icons-container";
-
 
     const editIcon = document.createElement("i");
     editIcon.className = "fa-solid fa-pen-to-square";
 
-
     const deleteIcon = document.createElement("i");
     deleteIcon.className = "fa-solid fa-trash";
 
-   //input field
+    //input field
     const editInput = document.createElement("input");
     editInput.type = "text";
     editInput.style.display = "none";
@@ -345,31 +278,25 @@ function createNoteItem(noteObj,index){
     editInput.style.fontSize = "12px";
     editInput.style.marginRight = "5px";
 
-
     iconsContainer.appendChild(editInput);
     iconsContainer.appendChild(editIcon);
     iconsContainer.appendChild(deleteIcon);
 
-
-
     const heading = document.createElement("h3");
     heading.innerText = "Sticky Notes";
-
 
     const para = document.createElement("p");
     para.innerText = noteObj.text;
 
-     //Time
+    //Time
     const timeDiv = document.createElement("div");
     timeDiv.className = "time";
     timeDiv.innerText = noteObj.time;
 
-     //Date
+    //Date
     const dateDiv = document.createElement("div");
     dateDiv.className = "date";
     dateDiv.innerText = noteObj.date;
-
-
 
     note.appendChild(iconsContainer);
     note.appendChild(heading);
@@ -379,63 +306,38 @@ function createNoteItem(noteObj,index){
 
     notesContainer.appendChild(note);
 
-
     // EDIT
     let editing = false;
 
     editIcon.addEventListener("click", function(){
 
         if(!editing){
-
             editInput.style.display = "block";
             editInput.value = noteObj.text;
             editInput.focus();
             editing = true;
-
         }
         else {
-
             notes[index].text = editInput.value;
             notes[index].time = displayTime();
             notes[index].date = displayDate();
 
             localStorage.setItem("notes", JSON.stringify(notes));
-
             loadNotes();
-
         } 
 
     });
 
-
-
     // DELETE
     deleteIcon.addEventListener("click", function(){
-
         notes.splice(index,1);
-
         localStorage.setItem("notes", JSON.stringify(notes));
-
         loadNotes();
-
     });
 
 }
 
 });
-        
-
-       
-       
-   
-
-
-
-
-
-
-
-
 </script>
 </body>
 </html>
