@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Mobile scaling fix -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sticky Notes App</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -16,7 +15,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    background: #f0f2f5;
 }
 
 /* NAVBAR */
@@ -92,18 +91,25 @@ body {
     margin: 0 auto;
 }
 
-/* NOTE ITEM */
+/* YELLOW STICKY NOTE DESIGN */
 .note {
     min-height: 220px;
-    background-image: url("s.jpg"); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 40px 15px 40px 15px;
+    background-color: #ffeb3b; /* Classic Yellow Color */
+    padding: 45px 15px 40px 15px;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 6px;
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     word-break: break-word;
+}
+
+/* Slight paper tilt effect for real sticky note feel */
+.note:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.note:nth-child(odd) {
+    transform: rotate(-1deg);
 }
 
 .note h3 {
@@ -111,15 +117,16 @@ body {
     margin: 10px 0 5px 0;
     font-family: 'KoHo', sans-serif;
     font-weight: bold;
+    color: #333;
 }
 
 .icons-container {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    left: 10px;
+    top: 8px;
+    right: 8px;
+    left: 8px;
     height: 30px;
-    background: rgba(105, 102, 102, 0.9);
+    background: rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -130,17 +137,21 @@ body {
 }
 
 .icons-container i {
-    color: white;
+    color: #333;
     cursor: pointer;
     font-size: 15px;
+}
+
+.icons-container i:hover {
+    color: #000;
 }
 
 .note .time {
     position: absolute;
     top: 45px;
     right: 15px;
-    font-size: 13px;
-    color: #222;
+    font-size: 12px;
+    color: #555;
     font-family: 'KoHo', sans-serif;
     font-weight: 600;
 }
@@ -149,29 +160,32 @@ body {
     position: absolute;
     bottom: 12px;
     right: 15px;
-    font-size: 13px;
-    color: #222;
+    font-size: 12px;
+    color: #555;
     font-family: 'KoHo', sans-serif;
     font-weight: 600;
 }
 
 .note p {
-    margin-top: 25px;
+    margin-top: 20px;
     font-family: 'KoHo', sans-serif;
+    color: #222;
+    font-size: 15px;
 }
 
 .note p::before {
     content: "→ "; 
-    color: black; 
+    color: #333; 
     font-weight: bold;
 }
 
 .note:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    transform: scale(1.03) rotate(0deg) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    z-index: 5;
 }
 
-/* MEDIA QUERIES FOR MOBILE STYLING */
+/* RESPONSIVE MEDIA QUERIES */
 @media (max-width: 600px) {
     .navbar {
         flex-direction: column;
